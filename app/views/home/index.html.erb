@@ -1,0 +1,16 @@
+<h1>Welcome to Sales Admin</h1>
+
+<h3>
+  <% if @invoice %>
+    Last Invoice: <a href="/invoices/<%= @invoice.id %>"> <%= @invoice.name %></a> <br/>
+    Last Invoice Total Revenue: <%= @invoice.total_revenue %>
+  <% else %>
+    Last Invoice: N/A <br/>
+    Last Invoice Total Revenue: N/A
+  <% end %>
+</h3>
+<%= form_tag '/invoices/upload', :autocomplete => "off", multipart: true, id: "invoice_upload_form", class: "form" do %>
+  <%= label_tag 'invoice_upload', 'Invoice Upload: '%>
+  <%= file_field 'invoice_upload', 'datafile' %><br/>
+  <button type="submit" id="form-submit" class="btn">Submit Form</button>
+<% end %>

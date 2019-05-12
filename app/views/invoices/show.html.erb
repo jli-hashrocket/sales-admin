@@ -1,0 +1,29 @@
+<h1>Invoice for <%= @invoice.name %></h1>
+
+<table>
+  <thead>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Item Description</th>	
+    <th>Item Price</th>	
+    <th>Quantity</th>	
+    <th>Merchant Name</th>
+    <th>Merchant Address</th>
+  </thead>
+  <tbody>
+  <% @invoice.purchases.each do |purchase| %>
+    <tr>
+      <td><%= purchase.customer.last_name %></td>
+      <td><%= purchase.customer.first_name %></td>
+      <td><%= purchase.item.description %></td>
+      <td><%= purchase.item.price %></td>
+      <td><%= purchase.quantity %></td>
+      <td><%= purchase.item.merchant.name %></td>
+      <td><%= purchase.item.merchant.address %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<br/>
+<a href="/home/index?invoice=<%= @invoice.id %>"><< Home</a>
+
